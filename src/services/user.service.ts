@@ -28,4 +28,38 @@ const getUsers = async () => {
   return users
 }
 
-export { createUser, getUsers }
+const getUserById = async (id: number) => {
+  const userRepository = AppDataSource.getRepository(User)
+
+  const user = await userRepository.findOneBy({
+    id,
+  })
+
+  return user
+}
+
+const updateUser = async (id: number, userDTO: IUserDTO) => {
+  const userRepository = AppDataSource.getRepository(User)
+
+  const user = await userRepository.findOneBy({
+    id,
+  })
+
+  const newDataUser = { ...user, ...userDTO }
+
+  const userUpdated = await userRepository.save(newDataUser)
+
+  return userUpdated
+}
+
+const deleteUser = async (id: number) => {
+  const userRepository = AppDataSource.getRepository(User)
+
+  await userRepository.delete({
+    id,
+  })
+
+  return {}
+}
+
+export { createUser, getUsers, getUserById, updateUser, deleteUser }
