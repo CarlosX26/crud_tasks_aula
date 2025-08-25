@@ -1,7 +1,5 @@
 import { Request, Response } from "express"
 import * as userService from "../services/user.service"
-import * as tasksService from "../services/tasks.service"
-
 
 const createUser = async (request: Request, response: Response) => {
   const userDTO = request.body
@@ -44,18 +42,3 @@ const deleteUser = async (request: Request, response: Response) => {
 }
 
 export { createUser, getUsers, getUserById, updateUser, deleteUser }
-
-
-const createTasks = async (request: Request, response: Response) => {
-  const tasksDTO = request.body
-  console.log("🚀 ~ createTasks ~ tasksDTO:", tasksDTO)
-  const data = await tasksService.createTasks(tasksDTO)
-  return response.status(201).json(data).send()
-}
-
-const getTasks = async (request: Request, response: Response) => {
-  const data = await tasksService.getTasks()
-  return response.status(200).json(data).send()
-}
-
-export { createTasks, getTasks }

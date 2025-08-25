@@ -6,27 +6,15 @@ import {
   UpdateDateColumn,
 } from "typeorm"
 
-@Entity("users")
-export class User {
+@Entity("tasks")
+export class Task {
   @PrimaryGeneratedColumn("increment")
   id!: number
 
   @Column({
-    length: 64,
+    type: "text",
   })
-  name!: string
-
-  @Column({
-    length: 200,
-    unique: true,
-  })
-  email!: string
-
-  @Column({
-    type: "int",
-    nullable: true,
-  })
-  age!: number
+  desc!: string
 
   @CreateDateColumn()
   createdAt!: Date

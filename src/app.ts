@@ -1,5 +1,6 @@
 import express from "express"
 import userRouter from "./routes/user.routes"
+import taskRouter from "./routes/task.routes"
 
 const app = express()
 
@@ -10,5 +11,6 @@ app.get("/", (_, response) => {
 })
 
 app.use("/users", userRouter)
+app.use("/tasks", taskRouter)
 
 export default app
