@@ -34,3 +34,20 @@ export class User {
   @UpdateDateColumn()
   updatedAt!: Date
 }
+
+ @Entity("tasks")
+ export class tasks {
+  @PrimaryGeneratedColumn ("increment")
+  id!: number;
+
+  @Column({
+    length: 100,
+  })
+  titulo!: string;
+
+  @CreateDateColumn()
+  createdAt!: Date
+
+  @UpdateDateColumn()
+  updatedAt!: Date
+ }
